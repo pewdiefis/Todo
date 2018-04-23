@@ -1,0 +1,25 @@
+<html>
+    <head>
+        
+    </head>
+    
+    <body>
+        <form method="POST" action="/todo/add" >
+       <div>
+           <label>Title: </label>
+           <input type="text" name="title" placeholder="Add title to do">
+       </div> 
+        <div>
+            <label>Description</label>
+            <textarea name="descripton" placeholder="Put  descripton here!!"></textarea>
+        </div>
+        <button type="submit">Submit</button>
+        </form>
+
+        <ul>
+            <% docs.map((doc) => { %>
+                <li> <%= doc.title %> - <%= doc.descripton %></li>
+            <% }); %>
+        </ul>
+    </body>
+</html>
