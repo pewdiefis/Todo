@@ -11,7 +11,7 @@ const ObjectId = require('mongodb').ObjectID;
 app.set('views', path.join(__dirname,'view'));
 app.set('view engine', 'ejs');
 
-app.use(express.static(path.join(__dirname,'public')));
+app.use(express.static(path.join(__dirname,'/public')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 
@@ -71,7 +71,7 @@ app.get('/todo/:id',(req,res) => {
 });
 
 app.get('/todo/delete/:id',(req,res) => {
-    todos.remove({id: ObjectId(req.params.id)},function(err,docs){
+    todos.remove({_id: ObjectId(req.params.id)},function(err,docs){
         if (err) {
             console.log(err);
         }
@@ -79,6 +79,14 @@ app.get('/todo/delete/:id',(req,res) => {
     });
 });
 
+app.get('/todo/show',(req,res) => {
+    todos.find({},(err,docs) => {
+        if(err){
+            console.log(err);
+        }
+        res.render('show',{docs:docs});
+    });
+});
 
 app.listen(3000,"localhost",err => {
     if (err) {
