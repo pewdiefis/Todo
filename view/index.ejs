@@ -11,14 +11,17 @@
        </div> 
         <div>
             <label>Description</label>
-            <textarea name="descripton" placeholder="Put  descripton here!!"></textarea>
+            <textarea name="description" placeholder="Put  descripton here!!"></textarea>
         </div>
         <button type="submit">Submit</button>
         </form>
 
         <ul>
             <% docs.map((doc) => { %>
-                <li> <%= doc.title %> - <%= doc.descripton %></li>
+                <li> <%= doc.title %> - <%= doc.description %></li>
+                <a href="/todo/<%= doc._id %>">Show</a>
+                <a href="/todo/edit/<%= doc._id %>">Edit</a>
+                <a href="/todo/delete/<%= doc._id %>">Delete</a>
             <% }); %>
         </ul>
     </body>

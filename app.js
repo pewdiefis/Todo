@@ -41,6 +41,44 @@ app.get('/',(req,res) => {
     });
 });
 
+app.get('/todo/edit/:id',(req,res) => {
+    todos.findOne({_id: ObjectId(req.params.id)},(err,doc) => {
+            if (err) {
+                console.log(err);
+            }
+            res.render('edit',{doc:doc});
+    });
+});
+
+app.post('/todo/update/:id',(req,res) => {
+    todos.updateOne({_id: ObjectId(req.params.id)},
+        {$set: {title: req.body.title, description:req.body.description.trim()}},
+        (err,doc) => {
+            if (err) {
+                console.log(err);
+            }
+            res.redirect('/');
+    });
+});
+app.get('/todo/:id',(req,res) => {
+    console.log(req.params.id);
+    todos.findOne({_id: ObjectId(req.params.id)}, (err,docs) =>{
+            if(err){
+                console.log(err);
+            }
+            res.render('show',{docs:docs});
+    }) ;
+});
+
+app.get('/todo/delete/:id',(req,res) => {
+    todos.remove({id: ObjectId(req.params.id)},function(err,docs){
+        if (err) {
+            console.log(err);
+        }
+        res.redirect('/');
+    });
+});
+
 
 app.listen(3000,"localhost",err => {
     if (err) {
