@@ -1,14 +1,36 @@
-<html>
-    <form method="POST" action="/todo/update/<%= doc._id %>">
-        <div>
-            <label>Title: </label>
-            <input type="text" name="title" value="<%= doc.title %>" placeholder="Add title to do">
-        </div> 
-         <div>
-             <label>Description</label>
-             <textarea name="description" placeholder="Put  descripton here!!"><%= doc.description %>
-            </textarea>
-         </div>
-         <button type="submit">Submit</button>
-    </form>
+<head>
+    <link type="text/css" rel="stylesheet" href="/bootstrap-3.3.7-dist\css\bootstrap.css">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+   
+    
+</head>
+<body>
+   <div class="container ">
+        <div class="row" style="height: 100px">
+        </div>
+        <div class="row panel panel-default" style="height: 180px">
+                <form class="form-group" method="POST" action="/todo/update/<%= doc._id %>">
+                      <div class="col-sm-1 col-lg-4 col-lg-offset-4 col-md-2 col-md-offset-1 ">
+                          <label>Title: </label>
+                      </div>
+                      <div class="col-lg-4 col-lg-offset-4 col-sm-12 col-md-11 col-md-offset-1 ">
+                            <input name="title" value="<%= doc.title %>" class="form-control" placeholder="Type title!!">
+                     </div>
+                 <div class="col-sm-1 col-lg-4 col-lg-offset-4 col-md-2 col-md-offset-1 ">
+                        <label>Description: </label>
+                    </div>
+                    <div class="col-lg-4 col-lg-offset-4 col-sm-12 col-md-11 col-md-offset-1 ">
+                            <textarea name="title" class="form-control" placeholder="Type description!!"><%= doc.description %>
+                            </textarea>
+                     </div>
+                   
+                        <div class=" col-lg-4 col-lg-offset-4 col-md-10 col-md-offset-1">
+                                <button type="submit" class="btn btn-primary btn-block">Submit</button>
+                                
+                        </div>
+                </form>
+        </div>
+   </div>
+</body>
 </html>

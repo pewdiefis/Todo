@@ -2,6 +2,9 @@
 <html>
 <head>
     <link rel="stylesheet" href="bootstrap-3.3.7-dist\css\bootstrap.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/main.css">
+    
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Page Title</title>
   
@@ -10,7 +13,7 @@
    <div class="container ">
         <div class="row" style="height: 100px">
         </div>
-        <div class="row panel panel-default" style="height: 180px">
+        <div class="row panel panel-default PanelColor" style="height: 190px;">
                 <form class="form-group" method="POST" action="/todo/add">
                       <div class="col-sm-1 col-lg-4 col-lg-offset-4 col-md-2 col-md-offset-1 ">
                           <label>Title: </label>
@@ -21,10 +24,9 @@
                  <div class="col-sm-1 col-lg-4 col-lg-offset-4 col-md-2 col-md-offset-1 ">
                         <label>Description: </label>
                     </div>
-                    <div class="col-lg-4 col-lg-offset-4 col-sm-12 col-md-11 col-md-offset-1 ">
-                            <textarea name="description" class="form-control" placeholder="Type description!!"></textarea>
+                    <div class="col-lg-4 col-lg-offset-4  col-sm-12 col-md-11 col-md-offset-1 ">
+                            <textarea name="description" onsubmit="isEmpty();" class="form-control" placeholder="Type description!!"></textarea>
                      </div>
-                   
                         <div class=" col-lg-4 col-lg-offset-4 col-md-10 col-md-offset-1">
                                 <button type="submit" class="btn btn-primary btn-block">Submit</button>
                         </div>
@@ -33,14 +35,15 @@
         
         <div class="row" style="height: 100px">
         </div>
-       <div class="panel panel-default">
+       <div class="panel panel-default PanelColor">
         <div class="panel-header">To do List:</div>
         
             <ul>
                 <% docs.map((doc) => { %>
                     <li><%= doc.title %> - <%= doc.description %></li>
-                    <a href="/todo/edit/<%= doc._id %>">Edit</a>
-                    <a href="/todo/delete/<%= doc._id %>">Delete</a>
+                    <a href="/todo/edit/<%= doc._id %>"><i class="far fa-edit"></i></a>
+                  
+                    <a href="/todo/delete/<%= doc._id %>"><i class="far fa-trash"></i></a>
            <% });  %>
 
             </ul>
